@@ -1,0 +1,39 @@
+hflags == gflags++
+==================
+
+This is a small library that wraps and extends gflags, offering some additional
+features that are useful in a system that deals with dynamic module loading,
+usually to allow pluggability.
+
+
+Added Features
+==============
+
+DECLARE
+-------
+
+This is a small helper that allows you to declare that you are using a flag
+from another module, to prevent unused imports. It is very naive at the moment
+but its interface should allow future improvements and optimizations without
+impacting users.
+
+
+Automatic Undefok
+-----------------
+
+In a pluggable system it can be very difficult to know all the modules that
+will be loaded at the beginning of execution, especially considering many
+pluggable systems will be using a flag to determine which modules get loaded.
+
+This modification allows the user to provide values for flags that are not
+known at initial parsing time, but will be reparsed once new flags are defined,
+allowing you to use flags for modules that will be loaded dynamically.
+
+
+Why Not Patch gflags?
+=====================
+
+python-gflags is explicitly trying to be compatible with the C++ version of
+gflags and these features don't really apply to a common C++ system. I would
+love to integrate these features and stop maintaining this library but it seems
+unlikely at this point.
