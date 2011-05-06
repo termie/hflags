@@ -17,6 +17,15 @@ from another module, to prevent unused imports. It is very naive at the moment
 but its interface should allow future improvements and optimizations without
 impacting users.
 
+Example:
+
+  import hflags
+
+  hflags.DECLARE('foo_flag', 'some.module.foo')
+
+
+Will ensure that foo_flag in some.module.foo is available in this module.
+
 
 Automatic Undefok
 -----------------
